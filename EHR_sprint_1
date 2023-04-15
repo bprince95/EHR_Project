@@ -1,0 +1,26 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract EHR_Project {
+    struct Patient {
+        string name;
+        uint age;
+        string[] medicalRecords;
+    }
+    
+    struct Doctor {
+        string name;
+        string specialization;
+    }
+    
+    mapping(address => Patient) patients;
+    mapping(address => Doctor) doctors;
+    
+    function registerPatient(string memory name, uint age) public {
+        patients[msg.sender] = Patient(name, age, new string[](0));
+    }
+    
+    function registerDoctor(string memory name, string memory specialization) public {
+        doctors[msg.sender] = Doctor(name, specialization);
+    }
+}
