@@ -13,8 +13,9 @@ contract EHR {
         string name;
         string qualification;
         string work_place;
-        uint id; 
+        uint ID;
     }
+
     struct Medicine { 
         uint id;
         string name;
@@ -33,14 +34,18 @@ contract EHR {
 
     function registerPatient(string memory _name, uint8 _age) public {
         patientCount++;
-        patients[patientCount] = Patient(patientCount, _name, _age, new string[](0));
+        patients[patientCount] = Patient(_name, _age, patientCount, new string[](0));
     }
 
     function registerDoctor(string memory _name, string memory _qualification, string memory _workPlace) public {
         doctorCount++;
-        doctors[doctorCount] = Doctor(doctorCount, _name, _qualification, _workPlace);
+        doctors[doctorCount] = Doctor(_name, _qualification, _workPlace, doctorCount);
     }
 
 }
+
+
+
+
 
 //TEST-1
